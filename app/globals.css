@@ -1,0 +1,394 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+
+    --primary: 221.2 83.2% 53.3%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 221.2 83.2% 53.3%;
+
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 217.2 91.2% 59.8%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 224.3 76.3% 48%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Markdown code block styling */
+.prose pre {
+  @apply bg-gray-100 dark:bg-gray-800 p-4 rounded-md overflow-x-auto;
+}
+
+.prose code {
+  @apply bg-gray-100 dark:bg-gray-800 px-1 py-0.5 rounded text-sm;
+}
+
+.prose pre code {
+  @apply bg-transparent p-0 text-sm;
+}
+
+.prose h1,
+.prose h2,
+.prose h3,
+.prose h4,
+.prose h5,
+.prose h6 {
+  @apply font-bold mt-6 mb-4;
+}
+
+.prose h1 {
+  @apply text-2xl;
+}
+
+.prose h2 {
+  @apply text-xl;
+}
+
+.prose h3 {
+  @apply text-lg;
+}
+
+.prose p {
+  @apply my-2;
+}
+
+.prose ul,
+.prose ol {
+  @apply my-4 pl-6;
+}
+
+.prose ul {
+  @apply list-disc;
+}
+
+.prose ol {
+  @apply list-decimal;
+}
+
+.prose blockquote {
+  @apply border-l-4 border-gray-300 dark:border-gray-600 pl-4 italic;
+}
+
+.prose a {
+  @apply text-blue-600 dark:text-blue-400 hover:underline;
+}
+
+.prose table {
+  @apply border-collapse w-full my-4;
+}
+
+.prose th,
+.prose td {
+  @apply border border-gray-300 dark:border-gray-600 p-2;
+}
+
+.prose th {
+  @apply bg-gray-100 dark:bg-gray-800;
+}
+
+/* Dark mode adjustments for chat interface */
+.dark .bg-gray-50 {
+  @apply bg-gray-900;
+}
+
+.dark .bg-white {
+  @apply bg-gray-800;
+}
+
+.dark .border {
+  @apply border-gray-700;
+}
+
+.dark .bg-blue-50 {
+  @apply bg-blue-900/20;
+}
+
+/* Improve contrast for chat messages in dark mode */
+.dark [data-role="user"] {
+  @apply bg-blue-900/30;
+}
+
+.dark [data-role="assistant"] {
+  @apply bg-gray-700;
+}
+
+/* Improve file attachment appearance in dark mode */
+.dark .bg-gray-100 {
+  @apply bg-gray-700;
+}
+
+/* Follow-up questions styling */
+.follow-up-question {
+  @apply inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors 
+  focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 
+  disabled:opacity-50 disabled:pointer-events-none ring-offset-background;
+}
+
+.follow-up-question-light {
+  @apply bg-blue-50 text-blue-700 hover:bg-blue-100 border border-blue-200;
+}
+
+.follow-up-question-dark {
+  @apply bg-blue-900/30 text-blue-300 hover:bg-blue-800/50 border border-blue-800;
+}
+
+/* Custom button styles for follow-up questions */
+.ui-button-follow-up {
+  @apply whitespace-normal break-words text-left h-auto py-2 px-3 font-normal;
+  max-width: 100%;
+  word-wrap: break-word;
+  hyphens: auto;
+}
+
+/* Ensure the follow-up questions container doesn't overflow */
+.follow-up-questions-container {
+  @apply w-full overflow-hidden;
+}
+
+/* Make sure buttons in the follow-up container wrap properly */
+.follow-up-questions-wrapper {
+  @apply flex flex-wrap gap-2;
+}
+
+/* Ensure each follow-up question button has proper constraints */
+.follow-up-question-button {
+  @apply flex-grow-0 max-w-full;
+}
+
+/* Ensure follow-up question buttons are clickable */
+.follow-up-question-button,
+.follow-up-questions-container button {
+  pointer-events: auto !important;
+  cursor: pointer !important;
+  position: relative;
+  z-index: 10;
+}
+
+/* Add hover effect to make it clear they're clickable */
+.follow-up-questions-container button:hover {
+  transform: translateY(-1px);
+  transition: transform 0.2s ease;
+}
+
+/* Mobile-specific improvements */
+@layer utilities {
+  .mobile-touch-target {
+    min-height: 44px;
+    min-width: 44px;
+    touch-action: manipulation;
+  }
+
+  .mobile-text {
+    font-size: 16px;
+  }
+
+  .mobile-scroll {
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+/* Mobile-specific media query */
+@media (max-width: 640px) {
+  button,
+  .follow-up-questions-container button,
+  [role="button"] {
+    min-height: 44px;
+    min-width: 44px;
+    touch-action: manipulation;
+  }
+
+  /* Improve spacing on mobile */
+  .prose {
+    font-size: 0.875rem; /* text-sm equivalent */
+  }
+
+  /* Ensure chat messages have proper spacing on small screens */
+  .max-w-[80%] {
+    max-width: 90%;
+  }
+
+  /* Improve scrolling experience */
+  .scroll-area {
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Prevent zoom on input focus */
+  input,
+  textarea {
+    font-size: 16px;
+  }
+}
+
+/* Improve dark mode contrast */
+.dark .prose {
+  @apply text-gray-200;
+}
+
+/* Add smooth transitions */
+.card,
+.button,
+.follow-up-questions-container button {
+  transition: all 0.2s ease;
+}
+
+/* Improve loading states */
+.loading {
+  @apply opacity-70 pointer-events-none;
+}
+
+/* Improve focus states for accessibility */
+:focus-visible {
+  @apply outline-2 outline-offset-2 outline-blue-500;
+}
+
+/* Prevent content from being hidden under fixed elements */
+main {
+  padding-bottom: env(safe-area-inset-bottom, 0);
+}
+
+/* Improve tap highlight color */
+html {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0.1);
+}
+
+/* Improved reference styling */
+@media (max-width: 640px) {
+  /* Better reference display on mobile */
+  .reference-link {
+    max-width: 100%;
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  /* Ensure proper spacing in reference items */
+  .reference-item {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 0.25rem;
+  }
+
+  /* Make reference icon align properly */
+  .reference-icon {
+    margin-top: 0.125rem;
+    flex-shrink: 0;
+  }
+}
+
+/* Add a tooltip-like effect for references on hover */
+a[title]:hover::after {
+  content: attr(title);
+  position: absolute;
+  bottom: 100%;
+  left: 0;
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  font-size: 0.75rem;
+  max-width: 300px;
+  word-break: break-all;
+  z-index: 50;
+  white-space: normal;
+  display: none;
+}
+
+@media (min-width: 768px) {
+  a[title]:hover::after {
+    display: block;
+  }
+}
+
+/* Line clamp utilities for text truncation */
+.line-clamp-1 {
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Ensure proper text wrapping */
+.whitespace-normal {
+  white-space: normal;
+}
+
+.break-words {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
