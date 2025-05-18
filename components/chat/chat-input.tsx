@@ -13,13 +13,13 @@ import ChatInputForm from "./chat-input-form"
 import { useIsMobile } from "@/hooks/use-mobile"
 
 const CHAT_OPTIONS = [
-  "General Macroeconomics",
-  "2 Wheels",
-  "4 Wheels",
-  "Retail General",
-  "Retail Beauty",
-  "Retail FnB",
-  "Retail Drugstore",
+  { label: "General Macroeconomics", value: "General Macroeconomics", disabled: false },
+  { label: "2 Wheels", value: "2 Wheels", disabled: false },
+  { label: "4 Wheels", value: "4 Wheels", disabled: true },
+  { label: "Retail General", value: "Retail General", disabled: true },
+  { label: "Retail Beauty", value: "Retail Beauty", disabled: true },
+  { label: "Retail FnB", value: "Retail FnB", disabled: true },
+  { label: "Retail Drugstore", value: "Retail Drugstore", disabled: true },
 ]
 
 interface ChatInputProps {
@@ -99,8 +99,8 @@ export default function ChatInput({ isLoading, inputValue = "", setInputValue }:
                 </SelectTrigger>
                 <SelectContent>
                   {CHAT_OPTIONS.map((option) => (
-                    <SelectItem key={option} value={option}>
-                      {option}
+                    <SelectItem key={option.value} value={option.value} disabled={option.disabled}>
+                      {option.label}
                     </SelectItem>
                   ))}
                 </SelectContent>
