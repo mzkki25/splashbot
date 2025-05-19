@@ -10,7 +10,7 @@ export default function Home() {
   const isMobile = useIsMobile()
   
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col min-h-screen dark:bg-gray-900">
       <header className="border-b">
         <div className="container flex items-center justify-between py-4">
           <div className="flex items-center gap-2">
@@ -38,7 +38,7 @@ export default function Home() {
       </header>
 
       <main className="flex-1">
-        <section className="py-20 light:bg-gradient-to-b from-blue-50 to-white dark:dark:bg-gray-900">
+        <section className="py-20 light:bg-gradient-to-b from-blue-50 to-white">
           <div className="container flex flex-col items-center text-center">
             <h2 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl">
             <span className="dark:text-gray-300">Your AI Assistant for</span> <span className="text-blue-600 dark:text-blue-300">Macroeconomics</span>
@@ -57,7 +57,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="py-16 container light:bg-gradient-to-b dark:bg-gray-900">
+        <section className="py-16 container light:bg-gradient-to-b">
           <h3 className="text-3xl font-bold text-center mb-12">Key Features</h3>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="flex flex-col items-center text-center p-6 rounded-lg border">
