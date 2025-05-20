@@ -174,7 +174,7 @@ export const createChatSessionSlice: StateCreator<
         id: msg.message_id,
         role: msg.role,
         content: msg.content,
-        timestamp: msg.timestamp,
+        timestamp: new Date(msg.timestamp).toISOString(),
         file: msg.file_id ? { id: msg.file_id } : undefined,
         references: msg.references,
       }))

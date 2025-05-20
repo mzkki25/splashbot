@@ -111,7 +111,7 @@ export function useChatActions({ setInput, setIsMobileMenuOpen }: UseChatActions
         id: `assistant-${Date.now()}`,
         role: "assistant" as const,
         content: response.response,
-        timestamp: response.created_at || new Date().toISOString(),
+        timestamp: response.created_at,
         references: response.references,
         follow_up_question: response.follow_up_question,
       }

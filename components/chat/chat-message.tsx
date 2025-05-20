@@ -142,7 +142,9 @@ const ChatMessage = memo(function ChatMessage({ message, onFollowUpQuestionClick
           </Card>
           <SafeClientOnly fallback={<div className="text-xs text-gray-500 mt-1 px-1">Loading time...</div>}>
             <div className="text-xs text-gray-500 dark:text-gray-400 mt-1 px-1">
-              {formatDistanceToNow(new Date(message.timestamp), { addSuffix: true })}
+              {formatDistanceToNow(new Date(message.timestamp), {
+                addSuffix: true,
+              })}
             </div>
           </SafeClientOnly>
         </div>
