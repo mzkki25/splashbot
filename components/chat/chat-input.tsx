@@ -50,12 +50,18 @@ export default function ChatInput({ isLoading, inputValue = "", setInputValue }:
 
   const onSendMessage = () => {
     if (isLoading || isUploading || (!input.trim() && !selectedFile)) return
+    if (selectedFile) {
+      handleRemoveFile()
+    }
     handleSendMessage(input, uploadedFileId, selectedFile)
     setInputHeight("60px")
   }
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
     if (e.key === "Enter" && !e.shiftKey) {
+      if (selectedFile) {
+        handleRemoveFile()
+      }
       e.preventDefault()
       onSendMessage()
     }
