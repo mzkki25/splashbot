@@ -39,6 +39,13 @@ export default function ChatInputForm({
   const isMobile = useIsMobile()
   const isDisabled = isLoading || isUploading || (!input.trim() && !selectedFile)
 
+  const handleSend = () => {
+    onSendMessage()
+    if (selectedFile) {
+      handleRemoveFile()
+    }
+  }
+
   return (
     <>
       {selectedFile && (
@@ -91,7 +98,7 @@ export default function ChatInputForm({
           <Button
             size="icon"
             type="button"
-            onClick={onSendMessage}
+            onClick={handleSend}
             disabled={isDisabled}
             aria-label="Send message"
             className={`${isMobile ? "h-12 w-12" : "h-10 w-10"} ${isDisabled ? "opacity-50" : ""}`}
