@@ -3,9 +3,9 @@
 import type React from "react"
 
 import { useState, useRef } from "react"
-import { useToast } from "@/components/ui/use-toast"
-import { uploadApi } from "@/lib/api/upload"
-import { getIdToken, waitForTokenReady } from "@/lib/auth"
+import { useToast } from "../components/ui/use-toast"
+import { uploadApi } from "../lib/api/upload"
+import { getIdToken, waitForTokenReady } from "../lib/auth"
 
 export function useFileUpload() {
   const [selectedFile, setSelectedFile] = useState<File | null>(null)
@@ -51,7 +51,6 @@ export function useFileUpload() {
     }
 
     setSelectedFile(file)
-
     try {
       setIsUploading(true)
       const idToken = getIdToken()

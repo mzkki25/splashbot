@@ -136,7 +136,7 @@ export default function Home() {
 
       <footer className="border-t py-6">
       <div className="container text-center text-gray-500 dark:text-white">
-          <p>© {new Date().getFullYear()} SPLASHBot. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} Capstone ADIIP Team 2 (Melisa Pride). All rights reserved.</p>
         </div>
       </footer>
     </div>

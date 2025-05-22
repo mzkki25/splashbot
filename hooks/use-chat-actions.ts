@@ -1,17 +1,17 @@
 "use client"
 
 import { useRouter } from "next/navigation"
-import { useToast } from "@/components/ui/use-toast"
-import { useStore } from "@/lib/store/useStore"
-import { chatApi } from "@/lib/api/chat"
-import { historyApi } from "@/lib/api/history"
+import { useToast } from "../components/ui/use-toast"
+import { useStore } from "../lib/store/useStore"
+import { chatApi } from "../lib/api/chat"
+import { historyApi } from "../lib/api/history"
 import {
   clearAuthData,
   getIdToken,
   generateChatSessionId,
   storeCurrentChatSession,
   waitForTokenReady,
-} from "@/lib/auth"
+} from "../lib/auth"
 
 interface UseChatActionsProps {
   setInput?: (input: string) => void
@@ -40,7 +40,7 @@ export function useChatActions({ setInput, setIsMobileMenuOpen }: UseChatActions
         id: item.chat_session_id,
         title: item.title,
         timestamp: item.timestamp,
-        messages: [], // We'll load messages only when needed
+        messages: [], 
       }))
 
       setChatHistory(formattedHistory)
@@ -111,7 +111,7 @@ export function useChatActions({ setInput, setIsMobileMenuOpen }: UseChatActions
         id: `assistant-${Date.now()}`,
         role: "assistant" as const,
         content: response.response,
-        timestamp: response.created_at,
+        timestamp: new Date().toISOString(),
         references: response.references,
         follow_up_question: response.follow_up_question,
       }
@@ -202,15 +202,13 @@ export function useChatActions({ setInput, setIsMobileMenuOpen }: UseChatActions
   }
 
   const handleNewChat = () => {
-    console.log("Creating new chat via handleNewChat")
-
     createNewChat()
 
     if (setIsMobileMenuOpen) {
       setIsMobileMenuOpen(false)
     }
 
-    router.push("/chat")
+    window.location.href = "/chat"
   }
 
   const handleFollowUpQuestionClick = (question: string) => {

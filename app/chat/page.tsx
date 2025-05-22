@@ -16,6 +16,7 @@ import ChatHeader from "@/components/chat/chat-header"
 import ChatInput from "@/components/chat/chat-input"
 import ChatMessage from "@/components/chat/chat-message"
 import InitialQuestions from "@/components/chat/chat-initial-questions"
+
 import { useChatActions } from "@/hooks/use-chat-actions"
 import { useInitialQuestions } from "@/hooks/use-initial-questions"
 import { useWelcomePopup } from "@/hooks/use-welcome-popup"
