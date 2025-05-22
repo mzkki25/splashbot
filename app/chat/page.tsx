@@ -35,7 +35,7 @@ export default function ChatPage() {
   const searchParams = useSearchParams()
 
   const { isWelcomePopupOpen, closeWelcomePopup } = useWelcomePopup()
-  const { currentChat, chatHistory, isLoading, createNewChat, loadChatMessages, chatOption } = useStore()
+  const { currentChat, chatHistory, isLoading, loadChatMessages, chatOption } = useStore()
 
   const showInitialQuestions =
     currentChat?.messages.length === 1 && currentChat.messages[0].role === "system" && !isLoading && !inputValue.trim()
@@ -83,7 +83,6 @@ export default function ChatPage() {
             await loadChatMessages(currentSessionId)
           } else {
             console.log("Creating new chat during initialization")
-            createNewChat()
           }
         }
       } catch (error) {
@@ -94,7 +93,6 @@ export default function ChatPage() {
           variant: "destructive",
         })
 
-        createNewChat()
       } finally {
         setInitialLoadComplete(true)
       }
@@ -103,7 +101,7 @@ export default function ChatPage() {
     if (!initialLoadComplete) {
       initializeChat()
     }
-  }, [initialLoadComplete, router, searchParams, toast, loadChatMessages, createNewChat, loadChatHistoryData])
+  }, [initialLoadComplete, router, searchParams, toast, loadChatMessages, loadChatHistoryData])
 
   useEffect(() => {
     if (currentChat) {
@@ -112,6 +110,7 @@ export default function ChatPage() {
         messageCount: currentChat.messages.length,
         firstMessageRole: currentChat.messages[0]?.role,
       })
+      // createNewChat(currentChat.id)
     } else {
       console.log("Current chat is null")
     }

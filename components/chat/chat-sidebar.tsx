@@ -2,7 +2,7 @@
 
 import { Button } from "@/components/ui/button"
 import { ScrollArea } from "@/components/ui/scroll-area"
-import { Trash2, LogOut, X, Plus } from "lucide-react"
+import { Trash2, LogOut, X, Plus, HistoryIcon } from "lucide-react"
 import { formatDistanceToNow } from "date-fns"
 import React, { useState, useEffect } from "react"
 import { useRouter } from "next/navigation"
@@ -10,6 +10,7 @@ import SafeClientOnly from "@/components/handler/safe-client-only"
 import type { ChatSession } from "@/lib/store/chatSessionStore"
 import { useIsMobile } from "@/hooks/use-mobile"
 import { useWelcomePopup } from "@/hooks/use-welcome-popup"
+import { useStore } from "@/lib/store/useStore"
 
 interface ChatSidebarProps {
   chatHistory: ChatSession[]
@@ -54,11 +55,17 @@ export default React.memo(function ChatSidebar({
     <div className="flex flex-col h-full">
       {/* Header */}
       <div className="p-4 border-b flex items-center justify-between">
-        <h1 className="font-semibold text-xl">Chat History</h1>
+        <div className="hidden md:flex items-center gap-2">
+          <HistoryIcon className="h-5 w-5" />
+          <span className="text-lg font-semibold">Chat History</span>
+        </div>
         {onClose && (
-          <Button variant="ghost" size="icon" onClick={onClose} className="md:hidden" aria-label="Close sidebar">
-            <X className="h-5 w-5" />
-          </Button>
+          <>
+            <span className="text-lg font-semibold">Chat History</span>
+            <Button variant="ghost" size="icon" onClick={onClose} className="md:hidden" aria-label="Close sidebar">
+              <X className="h-5 w-5" />
+            </Button>
+          </>
         )}
       </div>
 

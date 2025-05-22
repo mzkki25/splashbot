@@ -39,7 +39,7 @@ export interface ChatSessionSlice {
   setChatHistory: (history: ChatSession[]) => void
   deleteChat: (chatId: string) => void
   clearAllChats: () => void
-  createNewChat: () => void
+  // createNewChat: (chatId: string, title?: string) => void
   loadChatMessages: (chatSessionId: string) => Promise<void>
 }
 
@@ -61,6 +61,20 @@ export const createChatSessionSlice: StateCreator<
   chatHistory: [],
 
   setCurrentChat: (chat) => set({ currentChat: chat }),
+
+  // createNewChat: (chatId, title) => {
+  //   const newChat: ChatSession = {
+  //     id: chatId,
+  //     title: title || "New Conversation",
+  //     timestamp: new Date().toISOString(),
+  //     messages: [createWelcomeMessage()],
+  //   }
+  //   set({ currentChat: newChat })
+  //   set((state) => ({
+  //     chatHistory: [newChat, ...state.chatHistory],
+  //   }))
+  //   storeCurrentChatSession(chatId)
+  // },
 
   addMessage: (message) =>
     set((state) => {
@@ -106,27 +120,6 @@ export const createChatSessionSlice: StateCreator<
       chatHistory: [],
       currentChat: null,
     }),
-
-  createNewChat: () => {
-    const newChatId = generateChatSessionId()
-    storeCurrentChatSession(newChatId)
-
-    // Create a new chat with the welcome message
-    const newChat = {
-      id: newChatId,
-      title: "New Conversation",
-      timestamp: new Date().toISOString(),
-      messages: [createWelcomeMessage()],
-    }
-
-    // Update the state directly
-    set({ currentChat: newChat })
-
-    // Also add to chat history
-    set((state) => ({
-      chatHistory: [newChat, ...state.chatHistory],
-    }))
-  },
 
   loadChatMessages: async (chatSessionId: string) => {
     if (get().isLoading) return

@@ -22,7 +22,7 @@ export function useChatActions({ setInput, setIsMobileMenuOpen }: UseChatActions
   const router = useRouter()
   const { toast } = useToast()
 
-  const { currentChat, addMessage, setChatHistory, createNewChat, setIsLoading } = useStore()
+  const { currentChat, addMessage, setChatHistory, setIsLoading } = useStore()
 
   const loadChatHistoryData = async () => {
     if (useStore.getState().isLoading) return
@@ -149,8 +149,7 @@ export function useChatActions({ setInput, setIsMobileMenuOpen }: UseChatActions
         })
 
         if (currentChat?.id === chatId) {
-          createNewChat()
-          router.push("/chat")
+          router.push("/chat?id=" + generateChatSessionId())
         }
       }
     } catch (error) {
@@ -179,8 +178,7 @@ export function useChatActions({ setInput, setIsMobileMenuOpen }: UseChatActions
           description: "Your chat history has been cleared.",
         })
 
-        createNewChat()
-        router.push("/chat")
+        router.push("/chat?id=" + generateChatSessionId())
       }
     } catch (error) {
       console.error("Failed to clear chats:", error)
@@ -198,17 +196,16 @@ export function useChatActions({ setInput, setIsMobileMenuOpen }: UseChatActions
       title: "Logged out",
       description: "You have been successfully logged out.",
     })
-    router.push("/login")
+    router.push("/")
   }
 
   const handleNewChat = () => {
-    createNewChat()
 
     if (setIsMobileMenuOpen) {
       setIsMobileMenuOpen(false)
     }
 
-    window.location.href = "/chat"
+    window.location.href = "/chat?id=" + generateChatSessionId()
   }
 
   const handleFollowUpQuestionClick = (question: string) => {
