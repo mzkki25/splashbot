@@ -5,7 +5,7 @@ import type React from "react"
 import { Textarea } from "@/components/ui/textarea"
 import { Button } from "@/components/ui/button"
 import { FileText, ImageIcon, Loader2, Send, Upload, X } from "lucide-react"
-import { useIsMobile } from "@/hooks/use-mobile"
+import { useIsMobile } from "@/hooks/useMobile"
 
 interface ChatInputFormProps {
   input: string

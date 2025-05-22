@@ -11,7 +11,7 @@ import SafeClientOnly from "@/components/handler/safe-client-only"
 import FollowUpQuestions from "@/components/chat/chat-follow-up-question"
 import type { ChatMessage as ChatMessageType } from "@/lib/store/chatSessionStore"
 import { memo } from "react"
-import { useIsMobile } from "@/hooks/use-mobile"
+import { useIsMobile } from "@/hooks/useMobile"
 
 interface ChatMessageProps {
   message: ChatMessageType

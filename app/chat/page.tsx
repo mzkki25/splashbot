@@ -17,9 +17,9 @@ import ChatInput from "@/components/chat/chat-input"
 import ChatMessage from "@/components/chat/chat-message"
 import InitialQuestions from "@/components/chat/chat-initial-questions"
 
-import { useChatActions } from "@/hooks/use-chat-actions"
-import { useInitialQuestions } from "@/hooks/use-initial-questions"
-import { useWelcomePopup } from "@/hooks/use-welcome-popup"
+import { useChatActions } from "@/hooks/useChatAction"
+import { useInitialQuestions } from "@/hooks/useInitialQuestions"
+import { useWelcomePopup } from "@/hooks/useWelcomePopup"
 
 export default function ChatPage() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)

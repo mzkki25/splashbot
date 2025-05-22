@@ -7,10 +7,10 @@ import { Card } from "@/components/ui/card"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { ChatOptionTooltip } from "./chat-option-tooltip"
 import { useStore } from "@/lib/store/useStore"
-import { useChatActions } from "@/hooks/use-chat-actions"
-import { useFileUpload } from "@/hooks/use-file-upload"
+import { useChatActions } from "@/hooks/useChatAction"
+import { useFileUpload } from "@/hooks/useFileUpload"
 import ChatInputForm from "./chat-input-form"
-import { useIsMobile } from "@/hooks/use-mobile"
+import { useIsMobile } from "@/hooks/useMobile"
 
 const CHAT_OPTIONS = [
   { label: "General Macroeconomics", value: "General Macroeconomics", disabled: false },

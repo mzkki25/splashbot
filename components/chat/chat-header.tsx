@@ -4,7 +4,7 @@ import { LogOut } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { ThemeToggle } from "@/components/handler/theme-toggle"
 import Image from "next/image"
-import { useWelcomePopup } from "@/hooks/use-welcome-popup"
+import { useWelcomePopup } from "@/hooks/useWelcomePopup"
 
 interface ChatHeaderProps {
   onLogout: () => void

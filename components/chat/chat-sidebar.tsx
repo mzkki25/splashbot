@@ -8,8 +8,8 @@ import React, { useState, useEffect } from "react"
 import { useRouter } from "next/navigation"
 import SafeClientOnly from "@/components/handler/safe-client-only"
 import type { ChatSession } from "@/lib/store/chatSessionStore"
-import { useIsMobile } from "@/hooks/use-mobile"
-import { useWelcomePopup } from "@/hooks/use-welcome-popup"
+import { useIsMobile } from "@/hooks/useMobile"
+import { useWelcomePopup } from "@/hooks/useWelcomePopup"
 import { useStore } from "@/lib/store/useStore"
 
 interface ChatSidebarProps {
