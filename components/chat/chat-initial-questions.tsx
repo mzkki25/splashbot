@@ -43,7 +43,7 @@ export default function InitialQuestions({ questions, onQuestionClick, isLoading
             <Button
               key={index}
               variant="outline"
-              className="p-4 h-auto text-left justify-start hover:bg-blue-50 dark:hover:bg-blue-900/20 transition-all whitespace-normal break-words"
+              className="p-4 h-auto text-left justify-start hover:bg-blue-50 dark:hover:bg-blue-900/20 transition-all whitespace-normal break-words hover:translate-y-[-2px]"
               onClick={() => onQuestionClick(question)}
             >
               <span className="mr-3 text-blue-500 font-bold flex-shrink-0">{index + 1}.</span>
